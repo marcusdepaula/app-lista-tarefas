@@ -1,0 +1,28 @@
+<div class="todos">
+  <h3>Adicione sua tarefa no campo abaixo:</h3>
+  <!-- Form submit handler cuz button is submit -->
+  <form (submit)="addTodo()">
+    <!-- Input text todo -->
+    <input
+      type="text"
+      name="inputTodo"
+      placeholder="Descreva sua tarefa..."
+      class="todo-input"
+      [(ngModel)]="inputTodo"
+    />
+
+
+    <!-- Button submit todo -->
+    <input type="submit" value="Add. Tarefa" class="todo-submit" />
+  </form>
+
+  <!-- Todos -->
+  <div
+    *ngFor="let todo of todos; let i = index"
+    class="todo {{ todo.completed ? 'done' : '' }}"
+  >
+    <div class="id">{{ i }}</div>
+    <div class="content" (click)="toggleDone(i)">{{ todo.content }}</div>
+    <button class="delete" (click)="deleteTodo(i)">Remover</button>
+  </div>
+</div>
